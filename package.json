@@ -1,0 +1,28 @@
+{
+  "name": "dhy_tools",
+  "version": "1.0.5",
+  "description": "this's a simple tools for JS",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/justsuccess/tools.git"
+  },
+  "author": "956341817@qq.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/justsuccess/tools/issues"
+  },
+  "bin": {
+    "tools": "./lib/index.js"
+  },
+  "homepage": "https://github.com/justsuccess/tools.git",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1"
+  }
+}
