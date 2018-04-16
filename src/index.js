@@ -57,19 +57,19 @@ const arraySum = arr => arr.reduce((acc, val) => acc + val, 0);
 // 将数字四舍五入到指定的位数。
 const round = (n, decimals = 0) => Number(`${Math.round(`${n}e${decimals}`)}e-${decimals}`);
 //判断输入的字符是否为中文 
-const IsChinese = str => /^[\u0391-\uFFE5]+$/.test(str)
+const isChinese = str => /^[\u0391-\uFFE5]+$/.test(str)
 //判断日期类型是否为YYYY-MM-DD格式的类型 
-const IsDate = data => /^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})/.test(data);
+const isDate = data => /^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})/.test(data);
 //判断日期类型是否为YYYY-MM-DD hh:mm:ss格式的类型 
-const IsDateTime = datatime => /^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2}) (\d{1,2}):(\d{1,2}):(\d{1,2})$/.test(datatime)
+const isDateTime = datatime => /^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2}) (\d{1,2}):(\d{1,2}):(\d{1,2})$/.test(datatime)
 //判断日期类型是否为hh:mm:ss格式的类型 
-const IsTime = time => /^((20|21|22|23|[0-1]\d)\:[0-5][0-9])(\:[0-5][0-9])?$/.test(time);
+const isTime = time => /^((20|21|22|23|[0-1]\d)\:[0-5][0-9])(\:[0-5][0-9])?$/.test(time);
 //判断输入的字符是否为英文字母 
-const IsLetter = letter => /^[a-zA-Z]+$/.test(letter)
+const isLetter = letter => /^[a-zA-Z]+$/.test(letter)
 //判断输入的字符是否为整数 
-const IsInteger = integer => isNumber(integer) && /^[-+]?\d*$/.test(integer)
+const isInteger = integer => isNumber(integer) && /^[-+]?\d*$/.test(integer)
 //判断输入的字符是否为:a-z,A-Z,0-9  Username
-const IsUsername = name => /^[a-zA-Z0-9_]+$/.test(name)
+const isUsername = name => /^[a-zA-Z0-9_]+$/.test(name)
 //生成随机数
 const randombetween = (min, max) => min + (Math.random() * (max - min + 1));
 // 数组去重
@@ -79,6 +79,24 @@ const isIP = ip => {
   let exp = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/;
   return exp.test(ip)
 }
+// 设置 cookie 值的函数
+export const setCookie = (cname, cvalue, exdays) => {
+  let d = new Date();
+  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+  let expires = 'expires=' + d.toGMTString();
+  document.cookie = cname + '=' + encodeURIComponent(cvalue) + '; ' + expires;
+};
+// 获取 cookie 值的函数
+export const getCookie = (cname) => {
+  let name = cname + '=';
+  let ca = document.cookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i].trim();
+    if (c.indexOf(name) === 0) return decodeURIComponent(c.substring(name.length, c.length));
+  }
+  return '';
+};
+
 module.exports = {
   isArray: isArray,
   isFunction: isFunction,
@@ -100,14 +118,16 @@ module.exports = {
   arraySum: arraySum,
   round: round,
   store: store,
-  IsChinese: IsChinese,
-  IsDate: IsDate,
-  IsDateTime: IsDateTime,
-  IsTime: IsTime,
-  IsLetter: IsLetter,
-  IsInteger: IsInteger
-  IsUsername: IsUsername,
+  isChinese: isChinese,
+  isDate: isDate,
+  isDateTime: isDateTime,
+  isTime: isTime,
+  isLetter: isLetter,
+  isInteger: isInteger,
+  isUsername: isUsername,
   randombetween: randombetween,
   unique: unique,
-  isIP: isIP
+  isIP: isIP,
+  setCookie:setCookie,
+  getCookie:getCookie
 }
