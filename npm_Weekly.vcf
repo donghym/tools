@@ -1,0 +1,10 @@
+BEGIN:VCARD
+VERSION;TYPE=WORK:3.0
+FN;CHARSET=UTF-8:Marketing Department
+N;CHARSET=UTF-8:Marketing Department;;;;
+PROFILE:VCARD
+ADR;CHARSET=UTF-8:;;1999 Harrison St.,Ste 1150;Oakland;CA;94612;USA
+EMAIL:marketing@npmjs.com
+ORG;CHARSET=UTF-8:npm\, Inc.
+URL:http://npmjs.com
+END:VCARD

@@ -1,6 +1,6 @@
 {
   "name": "dhy_tools",
-  "version": "1.0.5",
+  "version": "1.0.8",
   "description": "this's a simple tools for JS",
   "main": "lib/index.js",
   "scripts": {
@@ -24,5 +24,8 @@
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-0": "^6.24.1"
+  },
+  "dependencies": {
+    "store": "^2.0.12"
   }
 }
