@@ -18,6 +18,7 @@ const isNull = o => o === null;
 const isNil = o => o === undefined || o === null;
 const isEmpty = o => o == null || !(Object.keys(o) || o).length;
 // 检测是否是 Email
+//  /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/  另一种方法
 const isEmail = str =>
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(str);
 // 检查身份证  
@@ -80,14 +81,14 @@ const isIP = ip => {
   return exp.test(ip)
 }
 // 设置 cookie 值的函数
-export const setCookie = (cname, cvalue, exdays) => {
+const setCookie = (cname, cvalue, exdays) => {
   let d = new Date();
   d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
   let expires = 'expires=' + d.toGMTString();
   document.cookie = cname + '=' + encodeURIComponent(cvalue) + '; ' + expires;
-};
+}
 // 获取 cookie 值的函数
-export const getCookie = (cname) => {
+const getCookie = (cname) => {
   let name = cname + '=';
   let ca = document.cookie.split(';');
   for (let i = 0; i < ca.length; i++) {
@@ -95,7 +96,48 @@ export const getCookie = (cname) => {
     if (c.indexOf(name) === 0) return decodeURIComponent(c.substring(name.length, c.length));
   }
   return '';
-};
+}
+const isMobile = (num) => isNumber(num) && /^1[3|5|8]\d{9}$/.test(num)
+const isTel = (num) => isString(num) && /^0\d{2,3}-?\d{7,8}$/.test(num)
+const hideMobile = (mobilenum) => (mobilenum+'').replace(/(\d{3})\d{4}(\d{4})/,'$1****$2')
+// 返回新的数组
+const mergeArray = (array,obj,key)=>array.map(val=>{
+  if(val[key]===obj[key]){
+    val=obj
+  }
+  return val
+})
+const each = (object, callback)=>{
+    const type = (function(){
+          switch (object.constructor){
+            case Object:
+                return 'Object';
+                break;
+            case Array:
+                return 'Array';
+                break;
+            case NodeList:
+                return 'NodeList';
+                break;
+            default:
+                return 'null';
+                break;
+        }
+    })();
+    // 为数组或类数组时, 返回: index, value
+    if(type === 'Array' || type === 'NodeList'){ // 由于存在类数组NodeList, 所以不能直接调用every方法
+        [].every.call(object, function(v, i){
+            return callback.call(v,v,i) === false ? false : true;
+        });
+    }else if(type === 'Object'){ // 为对象格式时,返回:key, value
+        for(var i in object){
+            if(callback.call(object[i],i,object[i]) === false){
+                break;
+            }
+        }
+    }
+}
+
 
 module.exports = {
   isArray: isArray,
@@ -129,5 +171,10 @@ module.exports = {
   unique: unique,
   isIP: isIP,
   setCookie:setCookie,
-  getCookie:getCookie
+  getCookie:getCookie,
+  isMobile:isMobile,
+  isTel:isTel,
+  hideMobile:hideMobile,
+  mergeArray:mergeArray,
+  each:each
 }
