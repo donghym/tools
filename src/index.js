@@ -18,7 +18,7 @@ const isNull = o => o === null;
 
 const isNil = o => o === undefined || o === null;
 const isEmpty = o => o == null || !(Object.keys(o) || o).length;
-
+const isObjectNull = o=> isObject(o) && JSON.stringify(o) == "{}" // 检测对象是否为空
 const classtype = {
     '[object Boolean]': 'boolean',
     '[object Number]': 'number',
