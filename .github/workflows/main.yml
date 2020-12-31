@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-        run: |
+      - run: |
           git config --global user.email "956341817@qq.com"
           git config --global user.name "wentian"
       - uses: actions/setup-node@v1
