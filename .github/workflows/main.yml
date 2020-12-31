@@ -18,6 +18,7 @@ jobs:
           node-version: 12
       - run: npm ci
       - run: echo hello
+      - run: npm version patch
         
   publish-npm:
     needs: build
