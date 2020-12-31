@@ -1,6 +1,6 @@
 {
   "name": "dhy_tools",
-  "version": "2.0.11",
+  "version": "2.0.12",
   "description": "this's a simple tools for JS",
   "main": "lib/index.js",
   "scripts": {
