@@ -16,7 +16,8 @@ jobs:
         with:
           node-version: 14
       - run: |
-          npm i husky pre-commit lint-staged @commitlint/cli @commitlint/config-conventional -D
+          npm install -g yarn
+          yarn add husky pre-commit lint-staged @commitlint/cli @commitlint/config-conventional -D
           npm install
           npm version patch
       - uses: JS-DevTools/npm-publish@v1
