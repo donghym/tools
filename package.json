@@ -29,6 +29,7 @@
     "husky": "^4.3.6"
   },
   "dependencies": {
+    "commitlint": "^11.0.0",
     "store": "^2.0.12"
   }
 }
