@@ -17,7 +17,6 @@ jobs:
           node-version: 14
       - run: |
           npm install
-          npm version patch
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
