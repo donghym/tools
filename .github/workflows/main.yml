@@ -22,13 +22,12 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          npm install
-          git config --global user.email "956341817@qq.com"
-          git config --global user.name "wentian"
-          npm run snapshot
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - run: npm ci
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
