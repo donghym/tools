@@ -29,4 +29,6 @@ jobs:
       - name: Run a multi-line script
         run: |
           npm install
+          git config --global user.email "956341817@qq.com"
+          git config --global user.name "wentian"
           npm run snapshot
