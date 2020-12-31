@@ -9,7 +9,7 @@
     "snapshot": "npm version patch && npm run build && npm publish",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
     "postversion": "git push --follow-tags",
-    "publishOnly":"npm run build"
+    "publishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -31,7 +31,10 @@
     "husky": "^4.3.6"
   },
   "dependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
     "commitlint": "^11.0.0",
+    "conventional-changelog-cli": "^2.1.1",
     "store": "^2.0.12"
   }
 }
