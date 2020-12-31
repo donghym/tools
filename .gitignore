@@ -1,5 +1,6 @@
 .DS_Store
 node_modules
+lib
 *.log
 test/e2e/reports
 test/e2e/screenshots
