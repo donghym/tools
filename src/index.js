@@ -13,7 +13,7 @@ const _IS = { // 检查各种类型
   empty: o => o == null || !(Object.keys(o) || o).length,
   objnull: o => isObject(o) && JSON.stringify(o) == "{}" // 检测对象是否为空
 }
-// add note 11
+// add note 111
 const _TypeOf = (obj) => {
   let classtype = {
     '[object Boolean]': 'boolean',
